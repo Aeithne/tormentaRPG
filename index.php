@@ -1,8 +1,28 @@
 <?php
 
+	class Pericia {
+		public $id;
+		public $nome;
+		public $habchave;
+		public $somentetreinado;
+		public $penarmadura;
+			
+		public function setar($nome, $habchave, $somentetreinado = false, $penarmadura = false) {
+			$this->nome = $nome;
+			$this->habchave = $habchave;
+			$this->somentetreinado = $somentetreinado;
+			$this->penarmadura = $penarmadura;
+		}
+	}
 
+	$pericias = array();
 
-	public function listaPericias() {
+	$pericia = new Pericia;
+	$pericia->setar("Atletismo", "FOR", false, true);
+
+	$pericias[] = $pericia;
+
+	
 		echo "<table>";
 		echo "<thead>";
 		echo "<td></td>";
@@ -17,10 +37,10 @@
 		echo "</thead>";
 
 		echo "<tbody>";
-		for ($i=0; $i < 20; $i++) {
+		foreach ($pericias as $pericia) {
 			echo "<tr>";
 			echo "<td><input type='checkbox'></td>";
-			echo "<td>NOME DA PERÍCIA</td>";
+			echo "<td>$pericia->nome</td>";
 			echo "<td><input type='number' size='3'></td>";
 			echo "<td>=</td>";
 			echo "<td><input type='number' size='3'></td>";
@@ -33,11 +53,3 @@
 		echo "</tbody>";
 
 		echo "</table>";
-	}
-	
-	
-	
-	
-	
-	
-?>
