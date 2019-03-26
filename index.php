@@ -37,39 +37,95 @@
 	$pericia = new Pericia;
 	$pericia->setar("CAVALGAR", "des", false, true);
 	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("CONHECIMENTO", "int", true, false, true);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("CONHECIMENTO", "int", true, false, true);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("CONHECIMENTO", "int", true, false, true);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("CURA", "sab", false, false);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("DIPLOMACIA", "car", false, false);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("ENGANAÇÃO", "car", false, false);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("FURTIVIDADE", "des", false, true);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("IDENTIFICAR MAGIA", "int", true, false);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("INICIATIVA", "des", false, false);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("INTIMIDAÇÃO", "car", false, false);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("INTUIÇÃO", "sab", false, false);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("LADINAGEM", "des", true, true);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("OBTER INFORMAÇÃO", "car", false, false);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("OFICIOS", "int", false, false, true);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("OFICIOS", "int", false, false, true);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("OFICIOS", "int", false, false, true);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("PERCEPÇÃO", "sab", false, false);
+	$pericias[] = $pericia;
+	$pericia = new Pericia;
+	$pericia->setar("SOBREVIVÊNCIA", "sab", false, false);
+	$pericias[] = $pericia;
 	
 	
-
-	
-		echo "<table>";
-		echo "<thead>";
-		echo "<td></td>";
-		echo "<th>PERÍCIA</th>";
-		echo "<th>TOTAL</th>";
-		echo "<td></td>";
-		echo "<th>GRAD</th>";
-		echo "<td></td>";
-		echo "<th>MOD. DE <BR> HABILIDADE</th>";
-		echo "<td></td>";
-		echo "<th>OUTROS</th>";
-		echo "</thead>";
+		echo "<div class='container caixaPericias bordas'>";
+		echo "<div class='row'>";
+		echo "<div class='checkbox caixaTitulo'>+</div>";
+		echo "<div class='col-3 nomePericia caixaTitulo'>PERÍCIA</div>";
+		echo "<div class='col-1'>TOTAL</div>";
+		echo "<div class='col-1'>GRAD</div>";
+		echo "<div class='col-1'>MOD. DE HABILIDADE</div>";
+		echo "<div class='col-1'>OUTROS</div>";
+		echo "</div>";
 
 		echo "<tbody>";
 		foreach ($pericias as $pericia) {
-			echo "<tr>";
-			echo "<td><input type='checkbox'></td>";
-			echo "<td>$pericia->nome ";
-			if ($pericia->especificar) echo "<input type='text'>";
-			echo "</td>";
-			echo "<td><input type='number' size='3'></td>";
-			echo "<td>=</td>";
-			echo "<td><input type='number' size='3'></td>";
-			echo "<td>+</td>";
-			echo "<td><input type='number' size='3'></td>";
-			echo "<td>+</td>";
-			echo "<td><input type='number' size='3'></td>";
-			echo "</tr>";
+			echo "<div class='row pericia pericia$pericia->habchave'>";
+			echo "<div class='checkbox'>";
+			echo "<input type='checkbox'>";
+			echo "</div>";
+			if ($pericia->especificar) {
+				echo "<div class='col-3'>";
+				echo "<span>$pericia->nome</span>";
+				echo "<input type='text' class='bordas'>";
+				echo "</div>";
+			} else {
+				echo "<div class='col-3'>";
+				echo "<span>$pericia->nome</span>";
+				echo "</div>";
+			}
+			
+			echo "<div class='col-1'><span><input type='number' step='1' class='caixaEntrada'>=</span> </div>";
+			echo "<div class='col-1'><span><input type='number' step='1' class='caixaEntrada'>+</span></div>";
+			echo "<div class='col-1'><span><input type='number' step='1' class='caixaEntrada mod_$pericia->habchave' size='3'>+</span></div>";
+			echo "<div class='col-1'><input type='number' step='1' class='caixaEntrada'></div>";
+			echo "</div>";
 		}
 		echo "</tbody>";
 
-		echo "</table>";
+		echo "</div>";
