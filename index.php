@@ -1,5 +1,7 @@
 <?php
 
+	header('Content-Type: text/html; charset=utf-8');
+
 	class Pericia {
 		public $id;
 		public $nome;
@@ -93,37 +95,46 @@
 	$pericias[] = $pericia;
 	
 	
-		echo "<div class='container caixaPericias bordas'>";
-		echo "<div class='row'>";
-		echo "<div class='checkbox caixaTitulo'>+</div>";
-		echo "<div class='col-3 nomePericia caixaTitulo'>PERÍCIA</div>";
-		echo "<div class='col-1'>TOTAL</div>";
-		echo "<div class='col-1'>GRAD</div>";
-		echo "<div class='col-1'>MOD. DE HABILIDADE</div>";
-		echo "<div class='col-1'>OUTROS</div>";
+		echo '<div class="caixaPericias">';
+		echo '<div class="row cabecalho align-items-end" style="padding: 0px;">';
+		echo '<div class="col-1 caixaTitulo"><i id="peric-add-new" class="fas fa-plus" style="cursor: pointer;"></i></div>';
+		
+		echo '
+		<div class="col-2 nomePericia caixaTitulo" >PERÍCIA</div>';
+		echo '<div class="col-1 caixaTitulo"><i id="peric-open-close" class="fas fa-angle-down" style="cursor: pointer;"></i></div>';
+		echo '
+		<div class="col-2">TOTAL</div>
+		<div class="col-2">GRAD</div>
+		<div class="col-2">MOD. DE HABILIDADE</div>
+		<div class="col-2">OUTROS</div>';
 		echo "</div>";
 
 		echo "<tbody>";
 		foreach ($pericias as $pericia) {
 			echo "<div class='row pericia pericia$pericia->habchave'>";
-			echo "<div class='checkbox'>";
-			echo "<input type='checkbox'>";
-			echo "</div>";
+			
 			if ($pericia->especificar) {
+				echo "<div class='col-1'>";
+				echo "<i id='peric-add-newline' class='fas fa-plus $pericia->habchave</i>' style='cursor: pointer;' onclick='addPericia(this, \"$pericia->habchave\");'></i>";
+				echo "</div>";
 				echo "<div class='col-3'>";
 				echo "<span>$pericia->nome</span>";
-				echo "<input type='text' class='bordas'>";
+				//echo "<input type='text' class='bordas'>";
 				echo "</div>";
 			} else {
+				echo "<div class='col-1'>";
+				echo "<input type='checkbox'>";
+				echo "</div>";
 				echo "<div class='col-3'>";
 				echo "<span>$pericia->nome</span>";
+				//echo "<input type='text' class='bordas'>";
 				echo "</div>";
 			}
 			
-			echo "<div class='col-1'><span><input type='number' step='1' class='caixaEntrada'>=</span> </div>";
-			echo "<div class='col-1'><span><input type='number' step='1' class='caixaEntrada'>+</span></div>";
-			echo "<div class='col-1'><span><input type='number' step='1' class='caixaEntrada mod_$pericia->habchave' size='3'>+</span></div>";
-			echo "<div class='col-1'><input type='number' step='1' class='caixaEntrada'></div>";
+			echo "<div class='col-2'><input type='number' step='1' class='caixaEntrada'></div>";
+			echo "<div class='col-2'><input type='number' step='1' class='caixaEntrada'></div>";
+			echo "<div class='col-2'><input type='number' step='1' class='caixaEntrada mod_$pericia->habchave' size='3'></div>";
+			echo "<div class='col-2'><input type='number' step='1' class='caixaEntrada'></div>";
 			echo "</div>";
 		}
 		echo "</tbody>";
